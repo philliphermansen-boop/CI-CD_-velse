@@ -18,12 +18,12 @@ jobs:
 
     steps:
     - name: Get Code
-        uses: actions/checkout@v7
+    uses: actions/checkout@v7
 
     - name: Setup .NET
-        uses: actions/setup-dotnet@v5
-        with:
-            dotnet-version: ${{ env.DOTNET_VERSION }}
+    uses: actions/setup-dotnet@v5
+    with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Restore
         run: dotnet restore ${{ env.SOLUTION_PATH }}
