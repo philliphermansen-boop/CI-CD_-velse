@@ -1,6 +1,6 @@
 services:
-  {your-containername}:
-    image: ghcr.io/{your-github-name}/{your-image}:latest
+  CICD_TEST:
+    image: ghcr.io/philliphermansen-boop/cicdovelse:latest
     restart: unless-stopped
     ports:
      - 8001:8001
@@ -8,10 +8,11 @@ services:
     labels:
       com.centurylinklabs.watchtower.enable: "true"
     healthcheck:
-      test: ["CMD", "dotnet", "{Your-Entypoint.dll}"]
+      test: ["CMD", "curl", "-f", "http://localhost:8001"]
       interval: 30s
       timeout: 3s
       retries: 3
+      start_period: 60s
 
   watchtower:
     image: nickfedor/watchtower
